@@ -1,0 +1,134 @@
+/* =========================================================
+   COLORS — change these to restyle the whole site
+   ========================================================= */
+:root {
+  --paper: #faf6ef;
+  --ink: #1f1b18;
+  --muted: #6b625a;
+  --line: #e4dccf;
+  --accent: #d9442a;        /* vermilion, borrowed from your CV */
+  --accent-soft: #fbe3d9;
+  --card: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #171412;
+    --ink: #efe8de;
+    --muted: #a89e93;
+    --line: #322b26;
+    --accent: #ff7a5c;
+    --accent-soft: #3a211b;
+    --card: #1f1b18;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 17px/1.7 "IBM Plex Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+/* ---------- top nav ---------- */
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+nav .mark { font-family: "Newsreader", serif; font-size: 20px; color: var(--ink); text-decoration: none; }
+nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; font-size: 14px; }
+nav ul a { color: var(--muted); text-decoration: none; }
+nav ul a:hover { color: var(--accent); }
+nav .right { display: flex; align-items: center; gap: 22px; }
+.lang { font-size: 13px; color: var(--ink); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 3px 11px; background: var(--card); }
+.lang:hover { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 560px) { nav ul { display: none; } }
+
+/* ---------- hero ---------- */
+header.hero { padding: 72px 0 48px; }
+.hero-grid { display: grid; grid-template-columns: 1fr 180px; gap: 40px; align-items: center; }
+.eyebrow {
+  font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600; margin: 0 0 12px;
+}
+h1 {
+  font-family: "Newsreader", serif; font-weight: 400;
+  font-size: clamp(40px, 7vw, 60px); line-height: 1.05; margin: 0 0 18px;
+  letter-spacing: -.01em;
+}
+.lede { font-size: 19px; color: var(--muted); margin: 0 0 24px; max-width: 34em; }
+.lede em { font-family: "Newsreader", serif; font-size: 1.12em; color: var(--ink); }
+.photo {
+  width: 180px; height: 180px; border-radius: 50%; object-fit: cover; object-position: center 30%;
+  border: 6px solid var(--card);
+  box-shadow: 0 0 0 1px var(--line), 12px 12px 0 var(--accent-soft);
+}
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.pill {
+  display: inline-block; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px;
+  font-size: 14px; color: var(--ink); text-decoration: none; background: var(--card);
+}
+.pill:hover { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 640px) {
+  header.hero { padding: 44px 0 32px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .photo { order: -1; width: 130px; height: 130px; }
+}
+
+/* ---------- sections ---------- */
+section { padding: 44px 0; border-top: 1px solid var(--line); }
+h2 {
+  font-family: "Newsreader", serif; font-weight: 400; font-style: italic;
+  font-size: 30px; margin: 0 0 22px; display: flex; align-items: baseline; gap: 14px;
+}
+h2 .num { font-family: "IBM Plex Sans", sans-serif; font-style: normal; font-size: 13px; color: var(--accent); font-weight: 600; letter-spacing: .08em; }
+p { margin: 0 0 1em; }
+
+.pull {
+  font-family: "Newsreader", serif; font-size: 22px; line-height: 1.45;
+  border-left: 3px solid var(--accent); padding: 4px 0 4px 20px; margin: 28px 0;
+}
+
+.photo-wide { margin: 8px 0 32px; }
+.photo-wide img { display: block; width: 70%; margin: 0 auto; height: auto; border-radius: 10px; box-shadow: 0 0 0 1px var(--line); }
+
+/* interests */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.tag { background: var(--accent-soft); color: var(--ink); font-size: 14px; padding: 5px 12px; border-radius: 6px; }
+
+/* entries (pubs, education) */
+.entry { display: grid; grid-template-columns: 90px 1fr; gap: 18px; padding: 16px 0; }
+.entry + .entry { border-top: 1px dashed var(--line); }
+.entry .year { font-size: 14px; color: var(--muted); font-weight: 500; padding-top: 3px; }
+.entry h3 { font-size: 17px; font-weight: 600; margin: 0 0 4px; line-height: 1.45; }
+.entry .meta { color: var(--muted); font-size: 15px; margin: 0; }
+.entry .meta a { font-size: 14px; }
+.badge { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+         color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 1px 7px; margin-right: 6px; vertical-align: 2px; }
+.entry.no-year { grid-template-columns: 1fr; }
+@media (max-width: 560px) { .entry { grid-template-columns: 1fr; gap: 2px; } }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+@media (max-width: 640px) { .two-col { grid-template-columns: 1fr; gap: 0; } }
+.plain { list-style: none; padding: 0; margin: 0; }
+.plain li { padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.plain li span { color: var(--muted); font-size: 15px; }
+
+footer { padding: 36px 0 56px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+
+/* ---------- Japanese page tweaks ---------- */
+html[lang="ja"] body { font-family: "IBM Plex Sans", "IBM Plex Sans JP", system-ui, sans-serif; line-height: 1.85; }
+html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] .pull, html[lang="ja"] .lede em, html[lang="ja"] nav .mark { font-family: "Newsreader", "Noto Serif JP", serif; }
+html[lang="ja"] h2 { font-style: normal; font-size: 26px; }
+html[lang="ja"] .lede em { font-style: normal; font-weight: 500; }
+html[lang="ja"] .pull { font-size: 20px; line-height: 1.7; }
+
