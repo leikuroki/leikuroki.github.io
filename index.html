@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leilani Kuroki</title>
+<meta name="description" content="Leilani Kuroki — PhD student in computational clinical psychology at Senshu University, researching perceived isolation, psychopathology, and evolutionary psychiatry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     COLORS — change these to restyle the whole site
+     ========================================================= */
+  :root {
+    --paper: #faf6ef;
+    --ink: #1f1b18;
+    --muted: #6b625a;
+    --line: #e4dccf;
+    --accent: #d9442a;        /* vermilion, borrowed from your CV */
+    --accent-soft: #fbe3d9;
+    --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #171412;
+      --ink: #efe8de;
+      --muted: #a89e93;
+      --line: #322b26;
+      --accent: #ff7a5c;
+      --accent-soft: #3a211b;
+      --card: #1f1b18;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 17px/1.7 "IBM Plex Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- top nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  nav .mark { font-family: "Newsreader", serif; font-size: 20px; color: var(--ink); text-decoration: none; }
+  nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; font-size: 14px; }
+  nav ul a { color: var(--muted); text-decoration: none; }
+  nav ul a:hover { color: var(--accent); }
+  @media (max-width: 560px) { nav ul { display: none; } }
+
+  /* ---------- hero ---------- */
+  header.hero { padding: 72px 0 48px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 180px; gap: 40px; align-items: center; }
+  .eyebrow {
+    font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin: 0 0 12px;
+  }
+  h1 {
+    font-family: "Newsreader", serif; font-weight: 400;
+    font-size: clamp(40px, 7vw, 60px); line-height: 1.05; margin: 0 0 18px;
+    letter-spacing: -.01em;
+  }
+  .lede { font-size: 19px; color: var(--muted); margin: 0 0 24px; max-width: 34em; }
+  .lede em { font-family: "Newsreader", serif; font-size: 1.12em; color: var(--ink); }
+  .photo {
+    width: 180px; height: 180px; border-radius: 50%; object-fit: cover; object-position: center 30%;
+    border: 6px solid var(--card);
+    box-shadow: 0 0 0 1px var(--line), 12px 12px 0 var(--accent-soft);
+  }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    display: inline-block; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px;
+    font-size: 14px; color: var(--ink); text-decoration: none; background: var(--card);
+  }
+  .pill:hover { border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 640px) {
+    header.hero { padding: 44px 0 32px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+    .photo { order: -1; width: 130px; height: 130px; }
+  }
+
+  /* ---------- sections ---------- */
+  section { padding: 44px 0; border-top: 1px solid var(--line); }
+  h2 {
+    font-family: "Newsreader", serif; font-weight: 400; font-style: italic;
+    font-size: 30px; margin: 0 0 22px; display: flex; align-items: baseline; gap: 14px;
+  }
+  h2 .num { font-family: "IBM Plex Sans", sans-serif; font-style: normal; font-size: 13px; color: var(--accent); font-weight: 600; letter-spacing: .08em; }
+  p { margin: 0 0 1em; }
+
+  .pull {
+    font-family: "Newsreader", serif; font-size: 22px; line-height: 1.45;
+    border-left: 3px solid var(--accent); padding: 4px 0 4px 20px; margin: 28px 0;
+  }
+
+  .photo-wide { margin: 8px 0 32px; }
+  .photo-wide img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 0 1px var(--line); }
+
+  /* interests */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .tag { background: var(--accent-soft); color: var(--ink); font-size: 14px; padding: 5px 12px; border-radius: 6px; }
+
+  /* entries (pubs, education) */
+  .entry { display: grid; grid-template-columns: 90px 1fr; gap: 18px; padding: 16px 0; }
+  .entry + .entry { border-top: 1px dashed var(--line); }
+  .entry .year { font-size: 14px; color: var(--muted); font-weight: 500; padding-top: 3px; }
+  .entry h3 { font-size: 17px; font-weight: 600; margin: 0 0 4px; line-height: 1.45; }
+  .entry .meta { color: var(--muted); font-size: 15px; margin: 0; }
+  .entry .meta a { font-size: 14px; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+           color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 1px 7px; margin-right: 6px; vertical-align: 2px; }
+  .entry.no-year { grid-template-columns: 1fr; }
+  @media (max-width: 560px) { .entry { grid-template-columns: 1fr; gap: 2px; } }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; gap: 0; } }
+  .plain { list-style: none; padding: 0; margin: 0; }
+  .plain li { padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .plain li span { color: var(--muted); font-size: 15px; }
+
+  footer { padding: 36px 0 56px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#">L. Kuroki</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#presentations">Presentations</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ======================= HERO ======================= -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">PhD Researcher · Senshu University</p>
+      <h1>Leilani Kuroki</h1>
+      <p class="lede">I study why feeling disconnected makes us unwell — and what our <em>evolutionary history</em> can potentially tell us about the mechanism.</p>
+      <div class="links">
+        <a class="pill" href="mailto:takekuro@hawaii.edu">Email</a>
+        <!-- Add more later by copying a line like this:
+        <a class="pill" href="https://orcid.org/0000-0000-0000-0000">ORCID</a>
+        <a class="pill" href="https://researchmap.jp/YOUR-ID">researchmap</a>
+        -->
+      </div>
+    </div>
+    <img class="photo" src="photo.jpg" alt="Portrait of Leilani Kuroki">
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ======================= ABOUT ======================= -->
+<section id="about">
+  <h2><span class="num">01</span> About</h2>
+  <p>I'm an interdisciplinary researcher based in Japan, currently doing my PhD in the Computational Clinical Psychology Lab at Senshu University, led by Dr. Yoshihiko Kunisato, one of the pioneers of computational psychiatry in Japan.</p>
+  <p>Before that, I completed an MSc in Psychology of Mental Health and Well-Being at the University of Wolverhampton, where I ran a randomized controlled trial on whether ChatGPT could ease momentary stress using CBT techniques. I received my undergraduate education at the University of Hawaiʻi at Mānoa, where I learned about zoology, genetics, economics, conflict resolution, and more. It laid the foundation for my interdisciplinary perspective, and I will always be grateful for the amazing teachers there.</p>
+</section>
+
+<!-- ======================= RESEARCH ======================= -->
+<section id="research">
+  <h2><span class="num">02</span> Research</h2>
+  <p>My dissertation focuses on the relationship between perceived isolation and psychopathology. It's well established that loneliness and social isolation are linked to depression, anxiety, and more — but research uncovering <em>why</em> remains limited.</p>
+  <p>My objectives are to:</p>
+  <ol>
+    <li>identify the distinct, fundamental "connection needs" we have as <i>Homo sapiens</i> (e.g., the need to share understanding and attitudes), and</li>
+    <li>examine how mental health symptoms arise when those needs go unmet.</li>
+  </ol>
+  <p>Evolutionary theory, I believe, speaks directly to the first question and, less directly, to the second. To get at both, I draw on evolutionary biology, neuroscience, and social psychology, alongside network and computational approaches.</p>
+  <p class="pull">We should never be blinded by our passion for evolution — but it has real potential to bring order to the chaos of psychiatric research.</p>
+  <figure class="photo-wide"><img src="chimpanzees.jpg" alt="Two chimpanzees sitting on a branch, one gently holding the other's head and touching faces" loading="lazy"></figure>
+  <p>Beyond the dissertation, I have a broader interest in evolutionary psychopathology, ethology, and the philosophy of science.</p>
+  <div class="tags">
+    <span class="tag">Loneliness &amp; perceived isolation</span>
+    <span class="tag">Evolutionary psychopathology</span>
+    <span class="tag">Computational psychiatry</span>
+    <span class="tag">Network approach</span>
+    <span class="tag">Depression &amp; anxiety</span>
+    <span class="tag">Philosophy of science</span>
+  </div>
+</section>
+
+<!-- ======================= PRESENTATIONS ======================= -->
+<section id="presentations">
+  <h2><span class="num">03</span> Presentations</h2>
+
+  <!-- To add a new one, copy everything from <div class="entry"> to its closing </div> -->
+  <div class="entry">
+    <div class="year">2026</div>
+    <div>
+      <h3>ChatGPT-4's Ability to Alleviate Momentary Stress Immediately by Using CBT Techniques: A Randomized Controlled Trial</h3>
+      <p class="meta"><span class="badge">Conference</span><strong>Kuroki, L.</strong> — 90th Annual Convention of the Japanese Psychological Association</p>
+      <p class="meta">
+        <a href="https://pub.confit.atlas.jp/en/event/jpa2026/presentation/VQcXR4tV-46" target="_blank" rel="noopener">Abstract</a> ·
+        <a href="kuroki-jpa2026.pdf" target="_blank" rel="noopener">PDF</a> ·
+        <a href="https://osf.io/59hv4" target="_blank" rel="noopener">Data (OSF)</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= EDUCATION ======================= -->
+<section id="education">
+  <h2><span class="num">04</span> Education</h2>
+  <div class="entry no-year">
+    <div>
+      <h3>PhD, Psychology</h3>
+      <p class="meta">Senshu University · Computational Clinical Psychology Lab</p>
+    </div>
+  </div>
+  <div class="entry no-year">
+    <div>
+      <h3>MSc, Psychology of Mental Health and Well-Being</h3>
+      <p class="meta">University of Wolverhampton</p>
+    </div>
+  </div>
+  <div class="entry no-year">
+    <div>
+      <h3>BA, Social Science</h3>
+      <p class="meta">University of Hawaiʻi at Mānoa · International Merit Award Scholarship · Dean's List</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= AFFILIATIONS ======================= -->
+<section id="affiliations">
+  <h2><span class="num">05</span> Affiliations</h2>
+  <ul class="plain">
+    <li>International Society for Evolution, Medicine &amp; Public Health <span>(ISEMPH)</span></li>
+    <li>Japanese Psychological Association</li>
+    <li>Pi Gamma Mu <span>(International Honor Society in Social Sciences)</span></li>
+  </ul>
+</section>
+
+<!-- ======================= CONTACT ======================= -->
+<section id="contact">
+  <h2><span class="num">06</span> Contact</h2>
+  <p>As a researcher studying the importance of connection, I am always very open to connecting with other researchers who want to exchange ideas or collaborate.</p>
+  <p><a href="mailto:takekuro@hawaii.edu">takekuro@hawaii.edu</a><br>
+  <span style="color:var(--muted)">Kanagawa, Japan</span></p>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Leilani Kuroki</div>
+</footer>
+
+</body>
+</html>
